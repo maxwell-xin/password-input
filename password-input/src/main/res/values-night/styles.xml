@@ -1,7 +1,9 @@
 <resources>
 
     <style name="Widget.Theme.MyPasswordInput.MyView" parent="">
-        <item name="android:background">@color/gray_600</item>
-        <item name="exampleColor">@color/light_blue_600</item>
+        <item name="pi_hint">"Password"</item>
+        <item name="pi_fontFamily">@font/dancing_script_medium</item>
+        <item name="pi_background">@color/light_blue_400</item>
+        <item name="pi_textSize">@dimen/text_medium</item>
     </style>
 </resources>
