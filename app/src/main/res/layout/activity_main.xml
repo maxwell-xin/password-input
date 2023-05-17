@@ -31,4 +31,12 @@
         app:pi_hint="My password"
         app:pi_textSize="12sp" />
 
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/composeView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/passwordInput"
+        app:layout_constraintStart_toStartOf="@id/passwordInput"
+        app:layout_constraintTop_toBottomOf="@id/passwordInput" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
