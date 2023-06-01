@@ -1,6 +1,4 @@
-## QR Scanner
-
-A simple QR scanner that uses the Google Vision API.
+## Password Input
 
 ## Installation
 
