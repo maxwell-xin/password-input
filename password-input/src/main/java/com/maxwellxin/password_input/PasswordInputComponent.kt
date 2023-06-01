@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.Icon
@@ -99,11 +100,13 @@ fun PasswordInputComponent(
                         innerTextField.invoke()
                     }
                     Icon(
+                        modifier = Modifier
+                            .width(18.dp)
+                            .clickable(onClick = {
+                                onVisibleChange(!inputContent.visible)
+                            }),
                         painter = if (inputContent.visible) painterResource(R.drawable.icon_eyes) else painterResource(R.drawable.icon_close_eyes),
                         contentDescription = "",
-                        modifier = Modifier.clickable(onClick = {
-                            onVisibleChange(!inputContent.visible)
-                        }),
                     )
                 }
             }
