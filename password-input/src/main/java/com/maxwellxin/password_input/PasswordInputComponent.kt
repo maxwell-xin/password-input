@@ -38,6 +38,7 @@ data class InputContent(
 fun PasswordInputComponent(
     label: String?,
     hint: String,
+    labelFontSize: TextUnit = 14.sp,
     fontSize: TextUnit = 14.sp,
     labelColor: Color,
     borderColor: Color,
@@ -53,17 +54,16 @@ fun PasswordInputComponent(
     )
 
     Column {
-        if (label != null)
-            Text(
-                text = label,
-                color = labelColor,
-                fontFamily = fontFamily,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 24.dp)
-            )
-        BasicTextField(
-            value = inputContent.value,
+        if (label != null) Text(
+            text = label,
+            color = labelColor,
+            fontSize = labelFontSize,
+            fontFamily = fontFamily,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp)
+        )
+        BasicTextField(value = inputContent.value,
             onValueChange = onValueChange,
             maxLines = 1,
             singleLine = true,
@@ -77,8 +77,7 @@ fun PasswordInputComponent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(
-                            color = Color.Transparent,
-                            shape = RoundedCornerShape(size = 8.dp)
+                            color = Color.Transparent, shape = RoundedCornerShape(size = 8.dp)
                         )
                         .border(
                             width = 1.dp,
@@ -90,13 +89,12 @@ fun PasswordInputComponent(
                     Box(
                         modifier = Modifier.weight(1f)
                     ) {
-                        if (inputContent.value.isEmpty())
-                            Text(
-                                text = hint,
-                                fontSize = fontSize,
-                                fontFamily = fontFamily,
-                                color = colorResource(android.R.color.darker_gray),
-                            )
+                        if (inputContent.value.isEmpty()) Text(
+                            text = hint,
+                            fontSize = fontSize,
+                            fontFamily = fontFamily,
+                            color = colorResource(android.R.color.darker_gray),
+                        )
                         innerTextField.invoke()
                     }
                     Icon(
@@ -105,18 +103,18 @@ fun PasswordInputComponent(
                             .clickable(onClick = {
                                 onVisibleChange(!inputContent.visible)
                             }),
-                        painter = if (inputContent.visible) painterResource(R.drawable.icon_eyes) else painterResource(R.drawable.icon_close_eyes),
+                        painter = if (inputContent.visible) painterResource(R.drawable.icon_eyes) else painterResource(
+                            R.drawable.icon_close_eyes
+                        ),
                         contentDescription = "",
                     )
                 }
-            }
+            })
+        if (inputContent.error != null) Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = inputContent.error!!,
+            fontSize = 12.sp,
+            color = MaterialTheme.colors.error
         )
-        if (inputContent.error != null)
-            Text(
-                modifier = Modifier.fillMaxWidth(),
-                text = inputContent.error!!,
-                fontSize = 12.sp,
-                color = MaterialTheme.colors.error
-            )
     }
 }
